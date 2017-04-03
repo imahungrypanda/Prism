@@ -1,7 +1,7 @@
-# Prysm
+# Prism
 
 ### Minimum Viable Product
-Prysm will be a Chrome extension that allows a user to filter a web page using 1 of 8 different filters. These filters are designed to simulate different types of color-blindness, allowing the user to view a website through the eyes of a color-blind user. Developers, for example, can utilize the extension to engineer their site’s UI/UX.
+Prism will be a Chrome extension that allows a user to filter a web page using 1 of 8 different filters. These filters are designed to simulate different types of color-blindness, allowing the user to view a website through the eyes of a color-blind user. Developers, for example, can utilize the extension to engineer their site’s UI/UX.
 
 - [ ] Chrome extension
 - [ ] 8 filters to use
