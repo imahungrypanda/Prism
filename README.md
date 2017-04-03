@@ -14,6 +14,23 @@ Prysm will be a Chrome extension that allows a user to filter a web page using 1
 ### Wireframe
 ![wire-frame](./docs/wireframe/prism_wireframe.png)
 
+### Technologies
+Our Chrome extension will be implemented using: jQuery, HTML, and CSS. We will have one script fill that has the logic to find all the DOM elements that need to be changed. There will also be one CSS file that holds all the filters being applied to the webpage.
+
+### Group Members
+
+Andrew Wong:
+- Research color-blindness
+- Determine what filters will be the most helpful
+- Write the algorithm to find DOM elements
+- Write Chrome Store page
+
+Steve Olsen:
+- Research Chrome extensions
+- Use JQuery to get the elements and be able to insert
+- Style the extension
+- Write the README and Demo site
+
 ### Implementation Timeline
 
 ##### Phase 1
