@@ -1,54 +1,59 @@
-const displayFilter = filterName => {
-  let el = document.getElementsByClassName(filterName)[0];
-  console.log(el);
-  el.style.display = "flex";
-};
-
-const hideFilter = filterName => {
-  let el = document.getElementsByClassName(filterName)[0];
-  el.style.display = "none";
-};
-
-const clearFilter = list => () => {
-  list.forEach(li => hideFilter(li.textContent));
+const clearFilter = image => {
+  image.style.webkitFilter = "none";
+  image.style.filter = "none";
 };
 
 
 document.addEventListener('DOMContentLoaded', () => {
   let list = document.getElementsByTagName('li');
   list = Array.prototype.slice.call(list);
-  const clear = clearFilter(list);
 
   list.forEach(li => {
     li.addEventListener('click', e => {
-      console.log(e.target.textContent);
-      clear();
+      let image = document.getElementsByClassName("filter")[0];
+      clearFilter(image);
 
       switch (e.target.textContent) {
         case "Protanopia":
-          displayFilter("Protanopia");
+          image.style.webkitFilter = "url('assets/filters.svg#protanopia')";
+          image.style.filter = "url('assets/filters.svg#protanopia')";
           break;
+
         case "Protanomaly":
-          displayFilter("Protanomaly");
+          image.style.webkitFilter = "url('assets/filters.svg#protanomaly')";
+          image.style.filter = "url('assets/filters.svg#protanomaly')";
           break;
+
         case "Deuteranopia":
-          displayFilter("Deuteranopia");
+          image.style.webkitFilter = "url('assets/filters.svg#deuteranopia')";
+          image.style.filter = "url('assets/filters.svg#deuteranopia')";
           break;
+
         case "Deuteranomaly":
-          displayFilter("Deuteranomaly");
+          image.style.webkitFilter = "url('assets/filters.svg#deuteranomaly')";
+          image.style.filter = "url('assets/filters.svg#deuteranomaly')";
           break;
+
         case "Tritanopia":
-          displayFilter("Tritanopia");
+          image.style.webkitFilter = "url('assets/filters.svg#tritanopia')";
+          image.style.filter = "url('assets/filters.svg#tritanopia')";
           break;
+
         case "Tritanomaly":
-          displayFilter("Tritanomaly");
+          image.style.webkitFilter = "url('assets/filters.svg#tritanomaly')";
+          image.style.filter = "url('assets/filters.svg#tritanomaly')";
           break;
+
         case "Achromatopsia":
-          displayFilter("Achromatopsia");
+          image.style.webkitFilter = "url('assets/filters.svg#achromatopsia')";
+          image.style.filter = "url('assets/filters.svg#achromatopsia')";
           break;
+
         case "Achromatomaly":
-          displayFilter("Achromatomaly");
+          image.style.webkitFilter = "url('assets/filters.svg#achromatomaly')";
+          image.style.filter = "url('assets/filters.svg#achromatomaly')";
           break;
+
         default:
           break;
       }

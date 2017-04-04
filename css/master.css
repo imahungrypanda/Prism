@@ -42,74 +42,9 @@ p {
   padding: 5px 10px 5px 10px;
 }
 
-.Protanopia {
+div.filter {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  -webkit-filter: url('assets/filters.svg#protanopia');
-  filter: url('assets/filters.svg#protanopia');
-}
-
-.Protanomaly {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  -webkit-filter: url('assets/filters.svg#protanomaly');
-  filter: url('assets/filters.svg#protanomaly');
-}
-
-.Deuteranopia {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  -webkit-filter: url('assets/filters.svg#deuteranopia');
-  filter: url('assets/filters.svg#deuteranopia');
-}
-
-.Deuteranomaly {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  -webkit-filter: url('assets/filters.svg#deuteranomaly');
-  filter: url('assets/filters.svg#deuteranomaly');
-}
-
-.Tritanopia {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  -webkit-filter: url('assets/filters.svg#tritanopia');
-  filter: url('assets/filters.svg#tritanopia');
-}
-
-.Tritanomaly {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  -webkit-filter: url('assets/filters.svg#tritanomaly');
-  filter: url('assets/filters.svg#tritanomaly');
-}
-
-.Achromatopsia {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  -webkit-filter: url('assets/filters.svg#achromatopsia');
-  filter: url('assets/filters.svg#achromatopsia');
-}
-
-.Achromatomaly {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  -webkit-filter: url('assets/filters.svg#achromatomaly');
-  filter: url('assets/filters.svg#achromatomaly');
 }
