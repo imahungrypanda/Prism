@@ -1,0 +1,49 @@
+body {
+  width: 400px;
+  height: 200px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+a{
+  padding: 10px;
+}
+
+h1 {
+  font-size: 24px;
+  padding: 10px;
+  color: red;
+}
+
+li {
+  border: 1px solid red;
+  padding: 3px 5px 3px 5px;
+  box-sizing: border-box;
+}
+
+li:hover {
+  cursor: pointer;
+}
+
+.filter-preview {
+  display: flex;
+}
+
+.Protanopia {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  width: 150px;
+}
+
+p {
+  padding: 5px 10px 5px 10px;
+}
