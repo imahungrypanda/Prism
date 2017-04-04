@@ -49,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
         case "Achromatomaly":
           displayFilter("Achromatomaly");
           break;
-
         default:
           break;
       }
