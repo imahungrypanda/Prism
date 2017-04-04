@@ -10,6 +10,7 @@ header {
 }
 
 a{
+  color: black;
   padding: 10px;
 }
 
@@ -33,17 +34,82 @@ li:hover {
   display: flex;
 }
 
-.Protanopia {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 img {
   width: 150px;
 }
 
 p {
   padding: 5px 10px 5px 10px;
+}
+
+.Protanopia {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  -webkit-filter: url('assets/filters.svg#protanopia');
+  filter: url('assets/filters.svg#protanopia');
+}
+
+.Protanomaly {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  -webkit-filter: url('assets/filters.svg#protanomaly');
+  filter: url('assets/filters.svg#protanomaly');
+}
+
+.Deuteranopia {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /*-webkit-filter: url('assets/filters.svg#protanopia');
+  filter: url('assets/filters.svg#protanopia');*/
+}
+
+.Deuteranomaly {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /*-webkit-filter: url('assets/filters.svg#protanopia');
+  filter: url('assets/filters.svg#protanopia');*/
+}
+
+.Tritanopia {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /*-webkit-filter: url('assets/filters.svg#protanopia');
+  filter: url('assets/filters.svg#protanopia');*/
+}
+
+.Tritanomaly {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /*-webkit-filter: url('assets/filters.svg#protanopia');
+  filter: url('assets/filters.svg#protanopia');*/
+}
+
+.Achromatopsia {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /*-webkit-filter: url('assets/filters.svg#protanopia');
+  filter: url('assets/filters.svg#protanopia');*/
+}
+
+.Achromatomaly {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /*-webkit-filter: url('assets/filters.svg#protanopia');
+  filter: url('assets/filters.svg#protanopia');*/
 }
