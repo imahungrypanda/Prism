@@ -3,6 +3,15 @@ const clearFilter = image => {
   image.style.filter = "none";
 };
 
+// const onClick = e => {
+//   let type = e.target.textContent;
+//   chrome.tabs.getSelected(function(tab){
+//     chrome.tabs.sendMessage(tab.id, {
+//       action: 'render',
+//       type: e.target.textContent
+//     });
+//   });
+// };
 
 document.addEventListener('DOMContentLoaded', () => {
   let list = document.getElementsByTagName('li');
@@ -12,6 +21,15 @@ document.addEventListener('DOMContentLoaded', () => {
     li.addEventListener('click', e => {
       let image = document.getElementsByClassName("filter")[0];
       clearFilter(image);
+
+      // ----- send message to content.js
+      chrome.tabs.getSelected(function(tab){
+        chrome.tabs.sendMessage(tab.id, {
+          action: 'render',
+          type: e.target.textContent
+        });
+      });
+      // -----
 
       switch (e.target.textContent) {
         case "Protanopia":
@@ -58,6 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
           break;
       }
 
-    })
+    });
   });
 });
