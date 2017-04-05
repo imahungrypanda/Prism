@@ -1,6 +1,7 @@
 chrome.runtime.onMessage.addListener(
   function(message, sender, sendResponse){
-    if(message.action === 'render'){
+    debugger;
+    if( message.action === 'render' ){
       $('*').each(() => {
         applyFilter(message.type);
       });

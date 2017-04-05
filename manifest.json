@@ -7,7 +7,10 @@
       "matches": [
         "<all_urls>"
       ],
-      "js": ["jquery-3.2.0.min.js", "content.js"]
+      "js": [
+        "jquery-3.2.0.min.js",
+        "content.js"
+      ]
     }
   ],
   "browser_action": {
@@ -19,6 +22,10 @@
       "background.js"
     ]
   },
+  "permissions": [
+      "storage",
+      "*://*/*"
+  ],
   "browser_action": {
     "default_title": "Prism",
     "default_popup": "prism.html"
