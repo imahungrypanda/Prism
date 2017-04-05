@@ -20,8 +20,8 @@ function applyFilter (filter) {
 
   switch (filter) {
     case "Protanopia":
-    page.style.webkitFilter = "url('assets/filters.svg#protanopia')";
-    page.style.filter = "url('assets/filters.svg#protanopia')";
+    page.style.webkitFilter = "url('https://drive.google.com/file/d/0B3_JvoUZqxgRZ3JadmJxYy1yU28/view?usp=sharing')";
+    page.style.filter = "url('https://drive.google.com/file/d/0B3_JvoUZqxgRZ3JadmJxYy1yU28/view?usp=sharing')";
     break;
 
     case "Protanomaly":
