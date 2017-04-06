@@ -1,3 +1,7 @@
+document.addEventListener('DOMContentLoaded', () => {
+  let svgEl = document.createElement('svg');
+})
+
 chrome.runtime.onMessage.addListener(
   function(message, sender, sendResponse){
     if( message.action === 'render' ){

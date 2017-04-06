@@ -1,6 +1,22 @@
-const clearFilter = image => {
+const clearFilter = (image, filterId) => {
   image.style.webkitFilter = "none";
   image.style.filter = "none";
+  if (filterId) {
+    document.getElementById(filterId.toLowerCase()).className = "";
+  }
+};
+
+const setActive = filterId => {
+  console.log(filterId);
+  if (filterId) {
+    document.getElementById(filterId.toLowerCase()).className = "active";
+  }
+};
+
+const deactive = filterId => {
+  if (filterId) {
+    document.getElementById(filterId.toLowerCase()).className = "";
+  }
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,12 +24,14 @@ document.addEventListener('DOMContentLoaded', () => {
   let list = document.getElementsByTagName('li');
   let image = document.getElementsByClassName("filter")[0];
   list = Array.prototype.slice.call(list);
-  setFilter(currentFilter, image);
+  setFilter(image, currentFilter);
 
   list.forEach(li => {
     li.addEventListener('click', e => {
+      deactive(currentFilter);
       currentFilter = e.target.textContent;
-      setFilter(currentFilter, image);
+      setActive(currentFilter);
+      setFilter(image, currentFilter);
 
       // ----- send message to content.js
       chrome.tabs.getSelected(function(tab){
@@ -28,13 +46,13 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   let toggleOn = document.getElementsByClassName("on")[0];
-  toggleOn.addEventListener("click", () => setFilter(currentFilter, image));
+  toggleOn.addEventListener("click", () => setFilter(image, currentFilter));
 
   let toggleOff = document.getElementsByClassName("off")[0];
-  toggleOff.addEventListener("click", () => clearFilter(image));
+  toggleOff.addEventListener("click", () => clearFilter(image, currentFilter));
 });
 
-const setFilter = (filter, image) => {
+const setFilter = (image, filter) => {
   switch (filter) {
     case "Protanopia":
       image.style.webkitFilter = "url('assets/filters.svg#protanopia')";
