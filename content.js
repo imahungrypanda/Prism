@@ -1,10 +1,9 @@
 chrome.runtime.onMessage.addListener(
   function(message, sender, sendResponse){
-    debugger;
     if( message.action === 'render' ){
-      $('*').each(() => {
+      // $('*').each(() => {
         applyFilter(message.type);
-      });
+      // });
       sendResponse(true);
     }
     // if( request.message === "clicked_browser_action" ) {
