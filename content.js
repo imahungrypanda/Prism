@@ -1,10 +1,9 @@
 chrome.runtime.onMessage.addListener(
   function(message, sender, sendResponse){
-    debugger;
     if( message.action === 'render' ){
-      $('*').each(() => {
+      // $('*').each(() => {
         applyFilter(message.type);
-      });
+      // });
       sendResponse(true);
     }
     // if( request.message === "clicked_browser_action" ) {
@@ -16,12 +15,12 @@ chrome.runtime.onMessage.addListener(
 );
 
 function applyFilter (filter) {
-  let page = document.getElementsByTagName('html')[0];
+  let page = document.getElementsByTagName('body')[0];
 
   switch (filter) {
     case "Protanopia":
-    page.style.webkitFilter = "url('assets/filters.svg#protanopia')";
-    page.style.filter = "url('assets/filters.svg#protanopia')";
+    page.style.webkitFilter = "url('https://drive.google.com/file/d/0B3_JvoUZqxgRZ3JadmJxYy1yU28/view?usp=sharing')";
+    page.style.filter = "url('https://drive.google.com/file/d/0B3_JvoUZqxgRZ3JadmJxYy1yU28/view?usp=sharing')";
     break;
 
     case "Protanomaly":
