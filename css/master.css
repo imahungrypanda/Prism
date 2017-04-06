@@ -27,16 +27,23 @@ h1 {
 }
 
 .Toggle {
+  display: flex;
+  align-items: center;
   color: silver;
   border: 3px solid silver;
-  box-sizing: content-box;
+  height: 28px;
 }
 
 .Toggle .on, .Toggle .off {
   cursor: pointer;
-  height: 2px;
-  width: 50%;
   padding: 5px 10px;
+}
+
+.Toggle .active {
+  border-bottom: 0px;
+  background-color: grey;
+  color: white;
+  background-clip: border-box;
 }
 
 a{

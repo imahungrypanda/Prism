@@ -1,4 +1,6 @@
 const clearFilter = (image, filterId) => {
+  document.getElementsByClassName("on")[0].className = "on";
+  document.getElementsByClassName("off")[0].className += " active";
   image.style.webkitFilter = "none";
   image.style.filter = "none";
   if (filterId) {
@@ -7,7 +9,6 @@ const clearFilter = (image, filterId) => {
 };
 
 const setActive = filterId => {
-  console.log(filterId);
   if (filterId) {
     document.getElementById(filterId.toLowerCase()).className = "active";
   }
@@ -30,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
     li.addEventListener('click', e => {
       deactive(currentFilter);
       currentFilter = e.target.textContent;
-
       setFilter(image, currentFilter);
 
       // ----- send message to content.js
@@ -45,7 +45,16 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   let toggleOn = document.getElementsByClassName("on")[0];
-  toggleOn.addEventListener("click", () => setFilter(image, currentFilter));
+  toggleOn.addEventListener("click", () => {
+    document.getElementsByClassName("off")[0].className = "off";
+    document.getElementsByClassName("on")[0].className += " active";
+
+    if (!currentFilter) {
+      currentFilter = "Protanopia";
+    }
+
+    setFilter(image, currentFilter);
+  });
 
   let toggleOff = document.getElementsByClassName("off")[0];
   toggleOff.addEventListener("click", () => clearFilter(image, currentFilter));
