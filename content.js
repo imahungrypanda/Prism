@@ -1,7 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
-  let svgEl = document.createElement('svg');
-})
-
 chrome.runtime.onMessage.addListener(
   function(message, sender, sendResponse){
     if( message.action === 'render' ){
@@ -19,7 +15,7 @@ chrome.runtime.onMessage.addListener(
 );
 
 function applyFilter (filter) {
-  let page = document.getElementsByTagName('html')[0];
+  let page = document.getElementsByTagName('body')[0];
 
   switch (filter) {
     case "Protanopia":
