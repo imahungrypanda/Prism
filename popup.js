@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     li.addEventListener('click', e => {
       deactive(currentFilter);
       currentFilter = e.target.textContent;
-      setActive(currentFilter);
+
       setFilter(image, currentFilter);
 
       // ----- send message to content.js
@@ -41,7 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       });
       // -----
-
     });
   });
 
@@ -53,6 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 const setFilter = (image, filter) => {
+  setActive(filter);
+
   switch (filter) {
     case "Protanopia":
       image.style.webkitFilter = "url('assets/filters.svg#protanopia')";
