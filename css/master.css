@@ -1,7 +1,7 @@
 body {
   width: 400px;
   height: 200px;
-  background-color: #CCFFFF;
+  /*background-color: #CCFFFF;*/
 }
 
 header {
@@ -80,6 +80,7 @@ li:hover {
 }
 
 p {
+  font-size: 14px;
   padding: 5px 10px 5px 10px;
   color: grey;
 }

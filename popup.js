@@ -1,6 +1,4 @@
 const clearFilter = (image, filterId) => {
-  document.getElementsByClassName("on")[0].className = "on";
-  document.getElementsByClassName("off")[0].className += " active";
   image.style.webkitFilter = "none";
   image.style.filter = "none";
   if (filterId) {
@@ -29,6 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   list.forEach(li => {
     li.addEventListener('click', e => {
+      document.getElementsByClassName("off")[0].className = "off";
+      document.getElementsByClassName("on")[0].className += " active";
       deactive(currentFilter);
       currentFilter = e.target.textContent;
       setFilter(image, currentFilter);
@@ -48,16 +48,18 @@ document.addEventListener('DOMContentLoaded', () => {
   toggleOn.addEventListener("click", () => {
     document.getElementsByClassName("off")[0].className = "off";
     document.getElementsByClassName("on")[0].className += " active";
-
     if (!currentFilter) {
       currentFilter = "Protanopia";
     }
-
     setFilter(image, currentFilter);
   });
 
   let toggleOff = document.getElementsByClassName("off")[0];
-  toggleOff.addEventListener("click", () => clearFilter(image, currentFilter));
+  toggleOff.addEventListener("click", () => {
+    document.getElementsByClassName("on")[0].className = "on";
+    document.getElementsByClassName("off")[0].className += " active";
+    clearFilter(image, currentFilter);
+  });
 });
 
 const setFilter = (image, filter) => {
