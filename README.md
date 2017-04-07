@@ -1,59 +1,26 @@
-# Prism
+# [Start Bootstrap](http://startbootstrap.com/) - [Grayscale](http://startbootstrap.com/template-overviews/grayscale/)
 
-### Minimum Viable Product
-Prism will be a Chrome extension that allows a user to filter a web page using 1 of 8 different filters. These filters are designed to simulate different types of color-blindness, allowing the user to view a website through the eyes of a color-blind user. Developers, for example, can utilize the extension to engineer their site’s UI/UX.
+[Grayscale](http://startbootstrap.com/template-overviews/grayscale/) is a multipurpose, one page HTML theme for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/). This template features various content sections and a Google Maps section with a custom map marker.
 
-- [ ] Chrome extension
-- [ ] 8 filters to use
-- [ ] Clears a filter
-- [ ] Changes photos and text
-- [ ] Options to just do text/just photos/whole site
-- [ ] Material Design
+## Getting Started
 
+To use this template, choose one of the following options to get started:
+* Download the latest release on Start Bootstrap
+* Fork this repository on GitHub
 
-### Wireframe
-![wire-frame](./docs/wireframe/prism_wireframe.png)
+## Bugs and Issues
 
-### Technologies
-Our Chrome extension will be implemented using: jQuery, HTML, and CSS. We will have one script fill that has the logic to find all the DOM elements that need to be changed. There will also be one CSS file that holds all the filters being applied to the webpage.
+Have a bug or an issue with this template? [Open a new issue](https://github.com/IronSummitMedia/startbootstrap-grayscale/issues) here on GitHub or leave a comment on the [template overview page at Start Bootstrap](http://startbootstrap.com/template-overviews/grayscale/).
 
-### Group Members
+## Creator
 
-Andrew Wong:
-- Research color-blindness
-- Determine what filters will be the most helpful
-- Write the algorithm to find DOM elements
-- Write Chrome Store page
+Start Bootstrap was created by and is maintained by **David Miller**, Managing Parter at [Iron Summit Media Strategies](http://www.ironsummitmedia.com/).
 
-Steve Olsen:
-- Research Chrome extensions
-- Use JQuery to get the elements and be able to insert
-- Style the extension
-- Write the README and Demo site
+* https://twitter.com/davidmillerskt
+* https://github.com/davidtmiller
 
-### Implementation Timeline
+Start Bootstrap is based on the [Bootstrap](http://getbootstrap.com/) framework created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thorton](https://twitter.com/fat).
 
-##### Phase 1
-- More research into Chrome extensions from [here](https://developer.chrome.com/extensions/overview)
-- End of day goal: Have a basic extension working
+## Copyright and License
 
-##### Phase 2
-- Use jQuery to find the image tags
-- Apply a filter to those tags
-
-##### Phase 3
-- jQuery to search for colored text, buttons, etc.
-- Apply filters to whole pages as an option
-- Allow toggling of: on, images only, text only, and off
-
-##### Phase 4
-- Test with people who are color-blind
-- Make demo site
-
-##### Phase 5
-- Style
-- Push to Chrome store
-
-##### Bonus
-- [ ] Port to other browsers (Firefox/Safari)
-- [ ] Website black/white list options
+Copyright 2013-2017 Blackrock Digital LLC. Code released under the [MIT](https://github.com/BlackrockDigital/startbootstrap-full-width-pics/blob/gh-pages/LICENSE) license.
