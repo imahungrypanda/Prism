@@ -18,6 +18,7 @@ const deactive = filterId => {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+  injectSVG();
   let currentFilter = "";
   let list = document.getElementsByTagName('li');
   let image = document.getElementsByClassName("filter")[0];
