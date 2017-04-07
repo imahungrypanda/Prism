@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const setFilter = (image, filter) => {
   setActive(filter);
-  let filterURL = `url('assets/filters.svg#${filter.toLowerCase()}')`;
+  let filterURL = `url('#${filter.toLowerCase()}')`;
   image.style.filter = filterURL;
   // ----- send message to content.js
   chrome.tabs.getSelected(function(tab){
