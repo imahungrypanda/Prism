@@ -1,7 +1,11 @@
 chrome.runtime.onMessage.addListener(
   function(message, sender, sendResponse){
-    if( message.action === 'render' ){
+    if( message.action === 'render' && message.type !== ''){
       addFilter(message.type);
+      sendResponse(true);
+    }
+    else {
+      revertColors();
       sendResponse(true);
     }
   }
@@ -44,7 +48,7 @@ function addFilter(filter) {
 }
 
 function revertColors() {
-    applyingStyle("none");
+    applyingStyle("");
 }
 
 function applyingStyle(filter) {

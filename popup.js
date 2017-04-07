@@ -1,6 +1,5 @@
 const clearFilter = (image, filterId) => {
-  image.style.webkitFilter = "none";
-  image.style.filter = "none";
+  setFilter(image, "");
   if (filterId) {
     document.getElementById(filterId.toLowerCase()).className = "";
   }
@@ -33,14 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
       currentFilter = e.target.textContent;
       setFilter(image, currentFilter);
 
-      // ----- send message to content.js
-      chrome.tabs.getSelected(function(tab){
-        chrome.tabs.sendMessage(tab.id, {
-          action: 'render',
-          type: currentFilter
-        });
-      });
-      // -----
     });
   });
 
@@ -64,4 +55,13 @@ const setFilter = (image, filter) => {
   setActive(filter);
   let filterURL = `url('assets/filters.svg#${filter.toLowerCase()}')`;
   image.style.filter = filterURL;
+  // ----- send message to content.js
+  chrome.tabs.getSelected(function(tab){
+    chrome.tabs.sendMessage(tab.id, {
+      action: 'render',
+      type: filter
+    });
+  });
+  // -----
+
 }
