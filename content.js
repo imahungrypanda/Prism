@@ -36,7 +36,7 @@ function injectSVG() {
     let div = document.createElement('div');
     div.id = 'injectedCB';
     div.innerHTML = svgFilters;
-    document.getElementsByTagName('html')[0].appendChild(div);
+    document.getElementsByTagName('head')[0].appendChild(div);
 }
 
 function addFilter(filter) {
@@ -52,7 +52,7 @@ function revertColors() {
 }
 
 function applyingStyle(filter) {
-    let page = document.getElementsByTagName('html')[0];
+    let page = document.getElementsByTagName('body')[0];
 
     page.style.filter = filter;
     page.style.webkitFilter = filter;
