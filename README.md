@@ -1,59 +1,30 @@
 # Prism
 
-### Minimum Viable Product
-Prism will be a Chrome extension that allows a user to filter a web page using 1 of 8 different filters. These filters are designed to simulate different types of color-blindness, allowing the user to view a website through the eyes of a color-blind user. Developers, for example, can utilize the extension to engineer their site’s UI/UX.
+![screenshot](docs/screenshot.png)
 
-- [ ] Chrome extension
-- [ ] 8 filters to use
-- [ ] Clears a filter
-- [ ] Changes photos and text
-- [ ] Options to just do text/just photos/whole site
-- [ ] Material Design
+Prism is a Chrome extension that simulates color-blindness when browsing the web. Users are able to select one of four different types of color-blindness in two degrees each (e.g., Protanopia and Protanomaly), effectively filtering all text, images, videos, backgrounds, and buttons on the current page.
 
+The extension utilizes the following:
 
-### Wireframe
-![wire-frame](./docs/wireframe/prism_wireframe.png)
+- Vanilla JavaScript
+- jQuery
+- HTML and CSS
+- Scalable Vector Graphics (SVG)
 
-### Technologies
-Our Chrome extension will be implemented using: jQuery, HTML, and CSS. We will have one script fill that has the logic to find all the DOM elements that need to be changed. There will also be one CSS file that holds all the filters being applied to the webpage.
+# Features
 
-### Group Members
+![screenshot](docs/example.gif)
 
-Andrew Wong:
-- Research color-blindness
-- Determine what filters will be the most helpful
-- Write the algorithm to find DOM elements
-- Write Chrome Store page
+Current features of the Prism include:
 
-Steve Olsen:
-- Research Chrome extensions
-- Use JQuery to get the elements and be able to insert
-- Style the extension
-- Write the README and Demo site
+- [X] An open-source Chrome extension
+- [X] Eight selectable filters to simulate a particular type of color-blindness
+- [X] Detailed previews and descriptions of each color-blindness
+- [X] Storage of the previously-chosen filter
+- [X] An on/off switch
 
-### Implementation Timeline
+# Functionality
 
-##### Phase 1
-- More research into Chrome extensions from [here](https://developer.chrome.com/extensions/overview)
-- End of day goal: Have a basic extension working
+<!-- First, an SVG script containing all color filters is injected directly into the page. These filters are represented by the Color Matrix Library, whose values are customized to simulate a particular type of color-blindness (e.g., Deuteranopia, Deuteranomaly, etc.).
 
-##### Phase 2
-- Use jQuery to find the image tags
-- Apply a filter to those tags
-
-##### Phase 3
-- jQuery to search for colored text, buttons, etc.
-- Apply filters to whole pages as an option
-- Allow toggling of: on, images only, text only, and off
-
-##### Phase 4
-- Test with people who are color-blind
-- Make demo site
-
-##### Phase 5
-- Style
-- Push to Chrome store
-
-##### Bonus
-- [ ] Port to other browsers (Firefox/Safari)
-- [ ] Website black/white list options
+As a user selects a type of color-blindness, Prism modifies the page by calling CSS’ built-in filter property, which provides graphical effects to elements of the page. Using a url value that points to the user-selected filter from the SVG script, Prism then applies styling to all elements of the page: text, images, videos, backgrounds, and buttons alike. -->
