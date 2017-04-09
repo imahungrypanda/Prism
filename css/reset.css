@@ -6,7 +6,7 @@ body, header, a, h1, div, ul, li, img, p {
   font-weight: inherit;
   font-style: inherit;
   font-size: 100%;
-  font-family: inherit;
+  font-family: 'Open Sans', sans-serif;
   vertical-align: inherit;
   text-decoration: inherit;
 }
