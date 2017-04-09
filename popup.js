@@ -73,27 +73,20 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-
-
 const setFilter = (image, filter) => {
   setActive(filter);
 
   let filterDes = document.getElementById('filter-description');
   filterDes.innerHTML = descriptions[filter];
 
-  // let filterURL = `url('assets/filters.svg#${filter.toLowerCase()}')`;
-
   let filterURL = `url('#${filter.toLowerCase()}')`;
-
   image.style.filter = filterURL;
 
-  // ----- send message to content.js
   chrome.tabs.getSelected(function(tab){
     chrome.tabs.sendMessage(tab.id, {
       action: 'render',
       type: filter
     });
   });
-  // -----
 
-}
+};

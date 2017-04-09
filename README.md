@@ -23,7 +23,48 @@ Current features of the Prism include:
 - [X] Storage of the previously-chosen filter
 - [X] An on/off switch
 
-# Functionality
+### Interactions between extension (popup) and page content
+
+The primary goal of the Popup scripts (popup.js) is to send requests to the extension's Content scripts (content.js). As the user selects a pre-defined filter in the popup page, this option is captured and passed along to another part of our extension.
+
+```javascript
+const setFilter = (image, filter) => {
+  setActive(filter);
+
+  // capturing the user-selected filter
+  let filterDes = document.getElementById('filter-description');
+  filterDes.innerHTML = descriptions[filter];
+
+  // filtering the popup.html page
+  let filterURL = `url('#${filter.toLowerCase()}')`;
+  image.style.filter = filterURL;
+
+  // sending the request (a POJO with an action and 'type' payload) to the Content scripts
+  chrome.tabs.getSelected(function(tab){
+    chrome.tabs.sendMessage(tab.id, {
+      action: 'render',
+      type: filter
+    });
+  });
+};
+```
+
+In turn, these Content scripts inject code directly into the web page, achieving the desired filter effects.
+
+```javascript
+chrome.runtime.onMessage.addListener(
+  function(message, sender, sendResponse){
+    if( message.action === 'render' && message.type !== ''){
+      addFilter(message.type);
+      sendResponse(true);
+    }
+    else {
+      revertColors();
+      sendResponse(true);
+    }
+  }
+);
+```
 
 <!-- First, an SVG script containing all color filters is injected directly into the page. These filters are represented by the Color Matrix Library, whose values are customized to simulate a particular type of color-blindness (e.g., Deuteranopia, Deuteranomaly, etc.).
 
