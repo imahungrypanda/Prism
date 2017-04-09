@@ -1,4 +1,5 @@
 body {
+  border: 2px solid lightgray;
   width: 400px;
 }
 
@@ -53,6 +54,7 @@ a{
 ul {
   list-style: none;
   margin-bottom: 5px;
+  margin-left: 5px;
 }
 
 li {

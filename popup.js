@@ -1,5 +1,5 @@
 const descriptions = {
-  ""              : "View the web through the eyes of the colorblind.",
+  ""              : "Prism allows you to view the web through the eyes of the color-blind. <br>This is an example of normal, unaltered vision.",
   "Protanopia"    : "A loss of sensitivity to red light. This is characterized by a tendency to confuse reds and greens.",
   "Protanomaly"   : "Characterized by the retina's diminished response to red light.",
   "Deuteranopia"  : "A loss of sensitivity to green light. This is characterized by a tendency to confuse blues and greens, and greens and reds.",
