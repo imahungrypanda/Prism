@@ -1,4 +1,5 @@
 body {
+  border: 2px solid lightgray;
   width: 400px;
 }
 
@@ -50,6 +51,12 @@ a{
   padding: 10px;
 }
 
+ul {
+  list-style: none;
+  margin-bottom: 5px;
+  margin-left: 5px;
+}
+
 li {
   height: 24px;
   color: silver;
@@ -92,10 +99,5 @@ p {
   padding: 5px 10px 5px 10px;
   color: grey;
   width: 235px;
-}
-
-.description {
   height: 86px;
-  display: flex;
-  align-items: center;
 }

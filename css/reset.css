@@ -10,7 +10,3 @@ body, header, a, h1, div, ul, li, img, p {
   vertical-align: inherit;
   text-decoration: inherit;
 }
-
-ul {
-  list-style: none;
-}
