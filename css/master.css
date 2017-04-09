@@ -50,6 +50,11 @@ a{
   padding: 10px;
 }
 
+ul {
+  list-style: none;
+  margin-bottom: 5px;
+}
+
 li {
   height: 24px;
   color: silver;
