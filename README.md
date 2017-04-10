@@ -9,9 +9,9 @@ Prism is a Chrome extension that simulates color-blindness when browsing the web
 The extension utilizes the following:
 
 - Vanilla JavaScript
-- jQuery
-- HTML and CSS
 - Scalable Vector Graphics (SVG)
+- HTML
+- CSS
 
 # Features
 
