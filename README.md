@@ -2,6 +2,8 @@
 
 ![screenshot](docs/screenshot.png)
 
+[Live on the Chrome Store](https://chrome.google.com/webstore/detail/prism/mjapjgpplodpimkkdleafghfbdfibgin)
+
 Prism is a Chrome extension that simulates color-blindness when browsing the web. Users are able to select one of four different types of color-blindness in two degrees each (e.g., Protanopia and Protanomaly), effectively filtering all text, images, videos, backgrounds, and buttons on the current page.
 
 The extension utilizes the following:
