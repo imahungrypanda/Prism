@@ -27,15 +27,71 @@ const deactive = filterId => {
   }
 };
 
+const setFilter = (image, filter) => {
+  setActive(filter);
 
+  let filterDes = document.getElementById('filter-description');
+  filterDes.innerHTML = descriptions[filter];
+
+  // let filterURL = `url('assets/filters.svg#${filter.toLowerCase()}')`;
+  let filterURL = `url('#${filter.toLowerCase()}')`;
+
+  image.style.filter = filterURL;
+
+  // save filter to storage
+  console.log("Before save:", filter);
+  chrome.storage.local.set({'filter':filter}, () => {
+    console.log("saved filter");
+  });
+
+  // send message to content.js
+  chrome.tabs.getSelected(function(tab){
+    chrome.tabs.sendMessage(tab.id, {
+      action: 'render',
+      type: filter
+    });
+  });
+}
+
+const getCurrentFilter = image => {
+  let filter = ""
+
+  chrome.storage.local.get(["filter"], (savedFilter) => {
+    console.log(savedFilter.filter);
+    filter = savedFilter.filter;
+    setFilter(image, filter);
+  })
+
+  return filter;
+}
+
+// chrome.runtime.onMessage.addListener((message, sender, sendReponse) => {
+// 	let filter = 'normal'
+// 	if (message.type === 'restoreFilter') {
+// 		filter = sessionStorage.getItem('filter')
+// 	}
+//   // else if (message.type === 'applyFilter') {
+// 	// 	filter = message.filter
+// 	// 	sessionStorage.setItem('filter', message.filter)
+// 	// 	if (filter !== 'normal' && svg.parentNode !== document.body) {
+// 	// 		document.body.appendChild(svg)
+// 	// 	} else if (filter === 'normal') {
+// 	// 		svg.parentNode.removeChild(svg)
+// 	// 	}
+// 	// }
+// 	// sendReponse(filter)
+//   console.log("filter: ", filter);
+// })
 
 document.addEventListener('DOMContentLoaded', () => {
   injectSVG();
-  let currentFilter = "";
   let list = document.getElementsByTagName('li');
-  let image = document.getElementsByTagName('body')[0];
   list = Array.prototype.slice.call(list);
-  setFilter(image, currentFilter);
+  let image = document.getElementsByTagName('body')[0];
+
+  let currentFilter = getCurrentFilter(image);
+  console.log("currentFilter: ", currentFilter);
+
 
 
   document.getElementById('about').addEventListener("click", e => {
@@ -61,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementsByClassName("off")[0].className = "off";
     document.getElementsByClassName("on")[0].className += " active";
     if (!currentFilter) {
-      currentFilter = "Protanopia";
+      currentFilter = getCurrentFilter(image);
     }
     setFilter(image, currentFilter);
   });
@@ -72,28 +128,3 @@ document.addEventListener('DOMContentLoaded', () => {
     clearFilter(image, currentFilter);
   });
 });
-
-
-
-const setFilter = (image, filter) => {
-  setActive(filter);
-
-  let filterDes = document.getElementById('filter-description');
-  filterDes.innerHTML = descriptions[filter];
-
-  // let filterURL = `url('assets/filters.svg#${filter.toLowerCase()}')`;
-
-  let filterURL = `url('#${filter.toLowerCase()}')`;
-
-  image.style.filter = filterURL;
-
-  // ----- send message to content.js
-  chrome.tabs.getSelected(function(tab){
-    chrome.tabs.sendMessage(tab.id, {
-      action: 'render',
-      type: filter
-    });
-  });
-  // -----
-
-}
