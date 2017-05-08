@@ -39,9 +39,13 @@ h1 {
   font-size: 14px;
 }
 
+.Toggle .off {
+  background-color: red;
+}
+
 .Toggle .active {
   border-bottom: 0px;
-  background-color: grey;
+  /*background-color: grey;*/
   color: white;
 }
 

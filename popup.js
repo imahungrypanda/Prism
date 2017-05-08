@@ -39,9 +39,9 @@ const setFilter = (image, filter) => {
   image.style.filter = filterURL;
 
   // save filter to storage
-  console.log("Before save:", filter);
+  // console.log("Before save:", filter);
   chrome.storage.sync.set({'filter':filter}, () => {
-    console.log("saved filter");
+    // console.log("saved filter");
   });
 
   // send message to content.js
@@ -51,7 +51,7 @@ const setFilter = (image, filter) => {
       type: filter
     });
   });
-}
+};
 
 const getCurrentFilter = image => {
   let filter = ""
@@ -72,16 +72,13 @@ document.addEventListener('DOMContentLoaded', () => {
   let image = document.getElementsByTagName('body')[0];
 
   chrome.storage.sync.get(["filter"], (savedFilter) => {
-    console.log(savedFilter.filter);
+    // console.log(savedFilter.filter);
     let filter = savedFilter.filter;
     setFilter(image, filter);
   })
 
   let currentFilter = getCurrentFilter(image);
-  console.log("currentFilter: ", currentFilter);
-
-
-
+  // console.log("currentFilter: ", currentFilter);
 
   document.getElementById('about').addEventListener("click", e => {
     e.preventDefault();
@@ -97,41 +94,25 @@ document.addEventListener('DOMContentLoaded', () => {
       deactive(currentFilter);
       currentFilter = e.target.textContent;
       setFilter(image, currentFilter);
-      // filterDes.innerHTML = descriptions[currentFilter];
-
     });
   });
 
   document.getElementsByClassName("on")[0].addEventListener("click", () => {
     document.getElementsByClassName("off")[0].className = "off";
+    document.getElementsByClassName("off")[0].style.backgroundColor = "white";
     document.getElementsByClassName("on")[0].className += " active";
+    document.getElementsByClassName("on")[0].style.backgroundColor = "green";
     if (!currentFilter) {
-      currentFilter = getCurrentFilter(image);
+      currentFilter = "Protanopia";
     }
     setFilter(image, currentFilter);
   });
 
   document.getElementsByClassName("off")[0].addEventListener("click", () => {
     document.getElementsByClassName("on")[0].className = "on";
+    document.getElementsByClassName("on")[0].style.backgroundColor = "white";
     document.getElementsByClassName("off")[0].className += " active";
+    document.getElementsByClassName("off")[0].style.backgroundColor = "red";
     clearFilter(image, currentFilter);
   });
 });
-
-const setFilter = (image, filter) => {
-  setActive(filter);
-
-  let filterDes = document.getElementById('filter-description');
-  filterDes.innerHTML = descriptions[filter];
-
-  let filterURL = `url('#${filter.toLowerCase()}')`;
-  image.style.filter = filterURL;
-
-  chrome.tabs.getSelected(function(tab){
-    chrome.tabs.sendMessage(tab.id, {
-      action: 'render',
-      type: filter
-    });
-  });
-
-};
