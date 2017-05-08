@@ -40,7 +40,7 @@ const setFilter = (image, filter) => {
 
   // save filter to storage
   console.log("Before save:", filter);
-  chrome.storage.local.set({'filter':filter}, () => {
+  chrome.storage.sync.set({'filter':filter}, () => {
     console.log("saved filter");
   });
 
@@ -56,7 +56,7 @@ const setFilter = (image, filter) => {
 const getCurrentFilter = image => {
   let filter = ""
 
-  chrome.storage.local.get(["filter"], (savedFilter) => {
+  chrome.storage.sync.get(["filter"], (savedFilter) => {
     console.log(savedFilter.filter);
     filter = savedFilter.filter;
     setFilter(image, filter);
@@ -89,8 +89,15 @@ document.addEventListener('DOMContentLoaded', () => {
   list = Array.prototype.slice.call(list);
   let image = document.getElementsByTagName('body')[0];
 
+  chrome.storage.sync.get(["filter"], (savedFilter) => {
+    console.log(savedFilter.filter);
+    let filter = savedFilter.filter;
+    setFilter(image, filter);
+  })
+  
   let currentFilter = getCurrentFilter(image);
   console.log("currentFilter: ", currentFilter);
+
 
 
 
