@@ -33,15 +33,12 @@ const setFilter = (image, filter) => {
   let filterDes = document.getElementById('filter-description');
   filterDes.innerHTML = descriptions[filter];
 
-  // let filterURL = `url('assets/filters.svg#${filter.toLowerCase()}')`;
   let filterURL = `url('#${filter.toLowerCase()}')`;
 
   image.style.filter = filterURL;
 
   // save filter to storage
-  // console.log("Before save:", filter);
   chrome.storage.sync.set({'filter':filter}, () => {
-    // console.log("saved filter");
   });
 
   // send message to content.js
@@ -57,8 +54,13 @@ const getCurrentFilter = image => {
   let filter = ""
 
   chrome.storage.sync.get(["filter"], (savedFilter) => {
-    console.log(savedFilter.filter);
     filter = savedFilter.filter;
+    if (filter !== "") {
+      document.getElementsByClassName("off")[0].className = "off";
+      document.getElementsByClassName("off")[0].style.backgroundColor = "white";
+      document.getElementsByClassName("on")[0].className += " active";
+      document.getElementsByClassName("on")[0].style.backgroundColor = "green";
+    }
     setFilter(image, filter);
   })
 
@@ -68,24 +70,15 @@ const getCurrentFilter = image => {
 document.addEventListener('DOMContentLoaded', () => {
   injectSVG();
   let list = document.getElementsByTagName('li');
-  list = Array.prototype.slice.call(list);
   let image = document.getElementsByTagName('body')[0];
-
-  chrome.storage.sync.get(["filter"], (savedFilter) => {
-    // console.log(savedFilter.filter);
-    let filter = savedFilter.filter;
-    setFilter(image, filter);
-  })
-
   let currentFilter = getCurrentFilter(image);
-  // console.log("currentFilter: ", currentFilter);
+  list = Array.prototype.slice.call(list);
 
   document.getElementById('about').addEventListener("click", e => {
     e.preventDefault();
     let newURL = "https://imahungrypanda.github.io/Prism/";
     chrome.tabs.create({ url: newURL });
   });
-
 
   list.forEach(li => {
     li.addEventListener('click', e => {
