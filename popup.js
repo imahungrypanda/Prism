@@ -27,23 +27,58 @@ const deactive = filterId => {
   }
 };
 
+const setFilter = (image, filter) => {
+  setActive(filter);
 
+  let filterDes = document.getElementById('filter-description');
+  filterDes.innerHTML = descriptions[filter];
+
+  let filterURL = `url('#${filter.toLowerCase()}')`;
+
+  image.style.filter = filterURL;
+
+  // save filter to storage
+  chrome.storage.sync.set({'filter':filter}, () => {
+  });
+
+  // send message to content.js
+  chrome.tabs.getSelected(function(tab){
+    chrome.tabs.sendMessage(tab.id, {
+      action: 'render',
+      type: filter
+    });
+  });
+};
+
+const getCurrentFilter = image => {
+  let filter = ""
+
+  chrome.storage.sync.get(["filter"], (savedFilter) => {
+    filter = savedFilter.filter;
+    if (filter !== "") {
+      document.getElementsByClassName("off")[0].className = "off";
+      document.getElementsByClassName("off")[0].style.backgroundColor = "white";
+      document.getElementsByClassName("on")[0].className += " active";
+      document.getElementsByClassName("on")[0].style.backgroundColor = "green";
+    }
+    setFilter(image, filter);
+  })
+
+  return filter;
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   injectSVG();
-  let currentFilter = "";
   let list = document.getElementsByTagName('li');
   let image = document.getElementsByTagName('body')[0];
+  let currentFilter = getCurrentFilter(image);
   list = Array.prototype.slice.call(list);
-  setFilter(image, currentFilter);
-
 
   document.getElementById('about').addEventListener("click", e => {
     e.preventDefault();
     let newURL = "https://imahungrypanda.github.io/Prism/";
     chrome.tabs.create({ url: newURL });
   });
-
 
   list.forEach(li => {
     li.addEventListener('click', e => {
@@ -52,14 +87,14 @@ document.addEventListener('DOMContentLoaded', () => {
       deactive(currentFilter);
       currentFilter = e.target.textContent;
       setFilter(image, currentFilter);
-      // filterDes.innerHTML = descriptions[currentFilter];
-
     });
   });
 
   document.getElementsByClassName("on")[0].addEventListener("click", () => {
     document.getElementsByClassName("off")[0].className = "off";
+    document.getElementsByClassName("off")[0].style.backgroundColor = "white";
     document.getElementsByClassName("on")[0].className += " active";
+    document.getElementsByClassName("on")[0].style.backgroundColor = "green";
     if (!currentFilter) {
       currentFilter = "Protanopia";
     }
@@ -68,25 +103,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.getElementsByClassName("off")[0].addEventListener("click", () => {
     document.getElementsByClassName("on")[0].className = "on";
+    document.getElementsByClassName("on")[0].style.backgroundColor = "white";
     document.getElementsByClassName("off")[0].className += " active";
+    document.getElementsByClassName("off")[0].style.backgroundColor = "red";
     clearFilter(image, currentFilter);
   });
 });
-
-const setFilter = (image, filter) => {
-  setActive(filter);
-
-  let filterDes = document.getElementById('filter-description');
-  filterDes.innerHTML = descriptions[filter];
-
-  let filterURL = `url('#${filter.toLowerCase()}')`;
-  image.style.filter = filterURL;
-
-  chrome.tabs.getSelected(function(tab){
-    chrome.tabs.sendMessage(tab.id, {
-      action: 'render',
-      type: filter
-    });
-  });
-
-};

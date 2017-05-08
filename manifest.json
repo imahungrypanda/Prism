@@ -8,14 +8,16 @@
         "<all_urls>"
       ],
       "js": [
-        "jquery-3.2.0.min.js",
-        "content.js"
+
+        "content.js",
+        "background.js"
       ]
     }
   ],
   "permissions": [
-      "*://*/*",
-      "tabs"
+    "storage",
+    "*://*/*",
+    "tabs"
   ],
   "browser_action": {
     "default_title": "Prism",
