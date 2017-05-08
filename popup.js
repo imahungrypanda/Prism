@@ -65,24 +65,6 @@ const getCurrentFilter = image => {
   return filter;
 }
 
-// chrome.runtime.onMessage.addListener((message, sender, sendReponse) => {
-// 	let filter = 'normal'
-// 	if (message.type === 'restoreFilter') {
-// 		filter = sessionStorage.getItem('filter')
-// 	}
-//   // else if (message.type === 'applyFilter') {
-// 	// 	filter = message.filter
-// 	// 	sessionStorage.setItem('filter', message.filter)
-// 	// 	if (filter !== 'normal' && svg.parentNode !== document.body) {
-// 	// 		document.body.appendChild(svg)
-// 	// 	} else if (filter === 'normal') {
-// 	// 		svg.parentNode.removeChild(svg)
-// 	// 	}
-// 	// }
-// 	// sendReponse(filter)
-//   console.log("filter: ", filter);
-// })
-
 document.addEventListener('DOMContentLoaded', () => {
   injectSVG();
   let list = document.getElementsByTagName('li');
@@ -94,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let filter = savedFilter.filter;
     setFilter(image, filter);
   })
-  
+
   let currentFilter = getCurrentFilter(image);
   console.log("currentFilter: ", currentFilter);
 
@@ -135,3 +117,21 @@ document.addEventListener('DOMContentLoaded', () => {
     clearFilter(image, currentFilter);
   });
 });
+
+const setFilter = (image, filter) => {
+  setActive(filter);
+
+  let filterDes = document.getElementById('filter-description');
+  filterDes.innerHTML = descriptions[filter];
+
+  let filterURL = `url('#${filter.toLowerCase()}')`;
+  image.style.filter = filterURL;
+
+  chrome.tabs.getSelected(function(tab){
+    chrome.tabs.sendMessage(tab.id, {
+      action: 'render',
+      type: filter
+    });
+  });
+
+};
