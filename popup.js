@@ -50,33 +50,40 @@ const setFilter = (image, filter) => {
   });
 };
 
+const toggleOnOff = () => {
+  let off = document.getElementsByClassName("off")[0];
+  let on  = document.getElementsByClassName("on")[0];
 
+  if (on.className === "on") {
+  console.log(on);
+    off.className = "off";
+    off.style.backgroundColor = "white";
+    on.className += " active";
+    on.style.backgroundColor = "green";
+  } else if (off.className === "off") {
+    on.className = "on";
+    on.style.backgroundColor = "white";
+    off.className += " active";
+    off.style.backgroundColor = "red";
+  }
+}
 
-const getCurrentFilter = image => {
-  let filter = ""
+document.addEventListener('DOMContentLoaded', () => {
+  let list = document.getElementsByTagName('li');
+  let image = document.getElementsByTagName('body')[0];
+  let currentFilter = "Protanopia";
+
+  list = Array.prototype.slice.call(list);
+  injectSVG();
 
   chrome.storage.sync.get(["filter"], (savedFilter) => {
     filter = savedFilter.filter;
     if (filter !== "") {
-      document.getElementsByClassName("off")[0].className = "off";
-      document.getElementsByClassName("off")[0].style.backgroundColor = "white";
-      document.getElementsByClassName("on")[0].className += " active";
-      document.getElementsByClassName("on")[0].style.backgroundColor = "green";
+      toggleOnOff();
+      currentFilter = filter;
     }
     setFilter(image, filter);
   });
-
-  return filter;
-};
-
-
-
-document.addEventListener('DOMContentLoaded', () => {
-  injectSVG();
-  let list = document.getElementsByTagName('li');
-  let image = document.getElementsByTagName('body')[0];
-  let currentFilter = getCurrentFilter(image);
-  list = Array.prototype.slice.call(list);
 
   document.getElementById('about').addEventListener("click", e => {
     e.preventDefault();
@@ -86,9 +93,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   list.forEach(li => {
     li.addEventListener('click', e => {
-      document.getElementsByClassName("off")[0].className = "off";
-      document.getElementsByClassName("on")[0].className += " active";
-      console.log(currentFilter);
+      if (document.getElementsByClassName("off")[0].className !== "off") {
+
+        toggleOnOff();
+      }
       deactive(currentFilter);
       currentFilter = e.target.textContent;
       setFilter(image, currentFilter);
@@ -96,10 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   document.getElementsByClassName("on")[0].addEventListener("click", () => {
-    document.getElementsByClassName("off")[0].className = "off";
-    document.getElementsByClassName("off")[0].style.backgroundColor = "white";
-    document.getElementsByClassName("on")[0].className += " active";
-    document.getElementsByClassName("on")[0].style.backgroundColor = "green";
+    toggleOnOff();
     if (!currentFilter) {
       currentFilter = "Protanopia";
     }
@@ -107,10 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   document.getElementsByClassName("off")[0].addEventListener("click", () => {
-    document.getElementsByClassName("on")[0].className = "on";
-    document.getElementsByClassName("on")[0].style.backgroundColor = "white";
-    document.getElementsByClassName("off")[0].className += " active";
-    document.getElementsByClassName("off")[0].style.backgroundColor = "red";
+    toggleOnOff();
     clearFilter(image, currentFilter);
   });
 });
