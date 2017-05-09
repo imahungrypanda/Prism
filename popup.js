@@ -50,6 +50,8 @@ const setFilter = (image, filter) => {
   });
 };
 
+
+
 const getCurrentFilter = image => {
   let filter = ""
 
@@ -62,10 +64,12 @@ const getCurrentFilter = image => {
       document.getElementsByClassName("on")[0].style.backgroundColor = "green";
     }
     setFilter(image, filter);
-  })
+  });
 
   return filter;
-}
+};
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
   injectSVG();
@@ -84,6 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
     li.addEventListener('click', e => {
       document.getElementsByClassName("off")[0].className = "off";
       document.getElementsByClassName("on")[0].className += " active";
+      console.log(currentFilter);
       deactive(currentFilter);
       currentFilter = e.target.textContent;
       setFilter(image, currentFilter);
