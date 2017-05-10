@@ -104,18 +104,15 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   document.getElementsByClassName("on")[0].addEventListener("click", () => {
-    if (document.getElementsByClassName("off")[0].className !== "off") {
-      toggleOnOff();
+    toggleOnOff();
+    if (!currentFilter) {
+      currentFilter = "Protanopia";
     }
-
     setFilter(image, currentFilter);
   });
 
   document.getElementsByClassName("off")[0].addEventListener("click", () => {
-    if (document.getElementsByClassName("off")[0].className === "off") {
-        toggleOnOff();
-    }
-
+    toggleOnOff();
     clearFilter(image, currentFilter);
   });
 });
