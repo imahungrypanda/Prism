@@ -94,7 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
   list.forEach(li => {
     li.addEventListener('click', e => {
       if (document.getElementsByClassName("off")[0].className !== "off") {
-
         toggleOnOff();
       }
       deactive(currentFilter);
